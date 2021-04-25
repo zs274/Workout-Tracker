@@ -8,9 +8,9 @@ router.get("/workouts", (req, res) => {
 });
 
 router.post("/workouts", (req, res) => {
-    Workout.create({})
+    db.Workout.create({})
         .then(dbWorkout => {
-            res.jsob(dbWorkout);
+            res.jsob(workouts);
         })
         .catch(err => {
             res.status(400).json(err);
@@ -24,9 +24,21 @@ router.put("/workouts/:id", (req, res) => {
         { new: true }
     )
         .then(dbWorkout => {
-            res.json(dbWorkout);
+            res.json(workouts);
         })
         .catch(err => {
             res.json(err);
         });
 });
+
+router.get("/workouts/range", (req, res) => {
+    db.Workout.find({})
+        .then(workouts => {
+            res.json(workouts);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
+
+module.exports = router;
