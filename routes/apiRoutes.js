@@ -50,8 +50,8 @@ totalDurationSum = () => {
             }
         }
     }]);
-    console.log(calculateDuration);
-    return calculateDuration;
+    console.log(calcTotalDuration);
+    return calcTotalDuration;
 }
 
 module.exports = router;
