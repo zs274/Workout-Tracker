@@ -41,5 +41,17 @@ router.get("/api/workouts/range", (req, res) => {
         });
 });
 
+totalDurationSum = () => {
+    const calcTotalDuration = db.Workout.exercises.aggregate([{
+        $group: {
+            _id: null,
+            totalDuration: {
+                $sum: "$exercises.duration"
+            }
+        }
+    }]);
+    console.log(calculateDuration);
+    return calculateDuration;
+}
 
 module.exports = router;
